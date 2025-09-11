@@ -15,11 +15,18 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Travel-specific variants
+        hero: "bg-gradient-hero text-primary-foreground shadow-glow hover:shadow-travel transform hover:scale-105 transition-all duration-300 font-semibold",
+        ocean: "bg-gradient-ocean text-primary-foreground shadow-travel hover:shadow-glow transition-all duration-300",
+        coral: "bg-coral text-coral-foreground shadow-soft hover:bg-coral/90 transition-smooth",
+        adventure: "bg-gradient-adventure text-adventure-foreground shadow-soft hover:shadow-travel transition-smooth",
+        glass: "bg-background/80 backdrop-blur-sm border border-white/20 text-foreground hover:bg-background/90 transition-smooth",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "h-14 rounded-lg px-10 text-base",
         icon: "h-10 w-10",
       },
     },
