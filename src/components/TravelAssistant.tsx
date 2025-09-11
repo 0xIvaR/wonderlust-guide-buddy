@@ -14,7 +14,19 @@ import {
   Star
 } from "lucide-react";
 
+import { useNavigate } from "react-router-dom";
+
 const TravelAssistant = () => {
+  const navigate = useNavigate();
+
+  const handleTryDemo = () => {
+    navigate("/assistant");
+  };
+
+  const handleLearnMore = () => {
+    // Could navigate to a detailed features page or scroll to more info
+    alert("Learn more about our Travel Assistant features!");
+  };
   return (
     <section className="py-20 bg-gradient-to-br from-primary/5 to-coral/5">
       <div className="container mx-auto px-4">
@@ -158,10 +170,10 @@ const TravelAssistant = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <Button variant="hero" size="xl" className="mr-4">
+          <Button variant="hero" size="xl" className="mr-4" onClick={handleTryDemo}>
             Try Demo Assistant
           </Button>
-          <Button variant="glass" size="xl">
+          <Button variant="glass" size="xl" onClick={handleLearnMore}>
             Learn More
           </Button>
         </div>

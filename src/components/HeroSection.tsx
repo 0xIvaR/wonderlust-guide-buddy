@@ -4,7 +4,14 @@ import { Card } from "@/components/ui/card";
 import { Search, Calendar, Users, MapPin } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 
+import { useNavigate } from "react-router-dom";
+
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleLearnAssistant = () => {
+    navigate("/assistant");
+  };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -93,7 +100,7 @@ const HeroSection = () => {
                 ✨ Get personalized local recommendations when you arrive at your destination
               </p>
             </div>
-            <Button variant="glass" className="mt-4">
+            <Button variant="glass" className="mt-4" onClick={handleLearnAssistant}>
               Learn About Travel Assistant
             </Button>
           </div>
