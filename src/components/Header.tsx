@@ -1,12 +1,19 @@
 import { MapPin, User, Menu, X, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, logout, isAuthenticated } = useAuth();
+  const { user, signOut, isAdmin } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+  };
 
   return (
     <header className="relative bg-background/95 backdrop-blur-sm border-b border-border shadow-soft z-50">
@@ -14,12 +21,12 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-hero rounded-lg flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
+            <div className="w-10 h-10 bg-gradient-hero rounded-lg flex items-center justify-center">
+              <MapPin className="w-6 h-6 text-white" />
+            </div>
+            <Link to="/">
               <h1 className="text-2xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-                WONDERLUST
+                Wanderlust
               </h1>
             </Link>
           </div>
@@ -35,29 +42,39 @@ const Header = () => {
 
           {/* User Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            {isAuthenticated ? (
-              <>
-                <span className="text-sm text-muted-foreground">
-                  Welcome, {user?.firstName}!
-                </span>
-                <Button variant="ghost" size="sm" onClick={logout}>
+            {user ? (
+              <div className="flex items-center space-x-3">
+                {isAdmin && (
+                  <Link to="/admin">
+                    <Button variant="secondary" size="sm">
+                      Admin Panel
+                    </Button>
+                  </Link>
+                )}
+                <Link to="/profile">
+                  <Button variant="ghost" size="sm">
+                    <User className="w-4 h-4 mr-2" />
+                    Profile
+                  </Button>
+                </Link>
+                <Button variant="ghost" size="sm" onClick={handleSignOut}>
                   <LogOut className="w-4 h-4 mr-2" />
-                  Logout
+                  Sign Out
                 </Button>
-              </>
+              </div>
             ) : (
               <>
-                <Button variant="ghost" size="sm" asChild>
-                  <Link to="/login">
+                <Link to="/login">
+                  <Button variant="ghost" size="sm">
                     <User className="w-4 h-4 mr-2" />
                     Login
-                  </Link>
-                </Button>
-                <Button variant="ocean" size="sm" asChild>
-                  <Link to="/signup">
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button variant="ocean" size="sm">
                     Sign Up
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </>
             )}
           </div>
@@ -77,35 +94,46 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-travel">
             <nav className="container mx-auto px-4 py-6 space-y-4">
-              <Link to="/hotels" className="block text-foreground hover:text-primary transition-smooth">Hotels</Link>
-              <Link to="/flights" className="block text-foreground hover:text-primary transition-smooth">Flights</Link>
-              <Link to="/tours" className="block text-foreground hover:text-primary transition-smooth">Tours</Link>
-              <Link to="/assistant" className="block text-foreground hover:text-primary transition-smooth">Assistant</Link>
-              <Link to="/community" className="block text-foreground hover:text-primary transition-smooth">Community</Link>
-              <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                {isAuthenticated ? (
+              <Link to="/hotels" className="block text-foreground hover:text-primary transition-smooth" onClick={() => setIsMenuOpen(false)}>Hotels</Link>
+              <Link to="/flights" className="block text-foreground hover:text-primary transition-smooth" onClick={() => setIsMenuOpen(false)}>Flights</Link>
+              <Link to="/tours" className="block text-foreground hover:text-primary transition-smooth" onClick={() => setIsMenuOpen(false)}>Tours</Link>
+              <Link to="/assistant" className="block text-foreground hover:text-primary transition-smooth" onClick={() => setIsMenuOpen(false)}>Assistant</Link>
+              <Link to="/community" className="block text-foreground hover:text-primary transition-smooth" onClick={() => setIsMenuOpen(false)}>Community</Link>
+              
+              <div className="pt-4 border-t border-border space-y-2">
+                {user ? (
                   <>
-                    <span className="text-sm text-muted-foreground px-3">
-                      Welcome, {user?.firstName}!
-                    </span>
-                    <Button variant="ghost" size="sm" onClick={logout}>
+                    {isAdmin && (
+                      <Link to="/admin" onClick={() => setIsMenuOpen(false)}>
+                        <Button variant="secondary" size="sm" className="w-full">
+                          Admin Panel
+                        </Button>
+                      </Link>
+                    )}
+                    <Link to="/profile" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="ghost" size="sm" className="w-full">
+                        <User className="w-4 h-4 mr-2" />
+                        Profile
+                      </Button>
+                    </Link>
+                    <Button variant="ghost" size="sm" className="w-full" onClick={handleSignOut}>
                       <LogOut className="w-4 h-4 mr-2" />
-                      Logout
+                      Sign Out
                     </Button>
                   </>
                 ) : (
                   <>
-                    <Button variant="ghost" size="sm" asChild>
-                      <Link to="/login">
+                    <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="ghost" size="sm" className="w-full">
                         <User className="w-4 h-4 mr-2" />
                         Login
-                      </Link>
-                    </Button>
-                    <Button variant="ocean" size="sm" asChild>
-                      <Link to="/signup">
+                      </Button>
+                    </Link>
+                    <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="ocean" size="sm" className="w-full">
                         Sign Up
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
                   </>
                 )}
               </div>
