@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Hotel, Plane, MapPin, Star, Clock, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 import hotelImage from "@/assets/hotel-card.jpg";
 import flightImage from "@/assets/flight-card.jpg";
 import tourImage from "@/assets/tour-card.jpg";
@@ -64,8 +65,10 @@ const BookingCards = () => {
                 </div>
               </div>
               
-              <Button variant="ocean" className="w-full">
-                Browse Hotels
+              <Button variant="ocean" className="w-full" asChild>
+                <Link to="/hotels">
+                  Browse Hotels
+                </Link>
               </Button>
             </CardContent>
           </Card>
@@ -114,8 +117,10 @@ const BookingCards = () => {
                 </div>
               </div>
               
-              <Button variant="adventure" className="w-full">
-                Search Flights
+              <Button variant="adventure" className="w-full" asChild>
+                <Link to="/flights">
+                  Search Flights
+                </Link>
               </Button>
             </CardContent>
           </Card>
@@ -164,8 +169,10 @@ const BookingCards = () => {
                 </div>
               </div>
               
-              <Button variant="coral" className="w-full">
-                Explore Tours
+              <Button variant="coral" className="w-full" asChild>
+                <Link to="/tours">
+                  Explore Tours
+                </Link>
               </Button>
             </CardContent>
           </Card>

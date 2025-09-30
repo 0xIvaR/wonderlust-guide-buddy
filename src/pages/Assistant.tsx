@@ -27,7 +27,7 @@ import {
   Eye,
   MessageCircle
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Assistant = () => {
   const navigate = useNavigate();
@@ -119,9 +119,11 @@ const Assistant = () => {
               <Button variant="ghost" size="sm" onClick={handleLocationToggle}>
                 {isLocationEnabled ? <Wifi className="w-4 h-4" /> : <WifiOff className="w-4 h-4" />}
               </Button>
-              <Button variant="ocean" size="sm">
-                <Users className="w-4 h-4 mr-2" />
-                Community
+              <Button variant="ocean" size="sm" asChild>
+                <Link to="/community">
+                  <Users className="w-4 h-4 mr-2" />
+                  Community
+                </Link>
               </Button>
             </div>
           </div>

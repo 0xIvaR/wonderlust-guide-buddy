@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Search, Calendar, Users, MapPin } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -78,17 +78,23 @@ const HeroSection = () => {
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl" className="flex-1">
-                <Search className="w-5 h-5 mr-2" />
-                Search Hotels
+              <Button variant="hero" size="xl" className="flex-1" asChild>
+                <Link to="/hotels">
+                  <Search className="w-5 h-5 mr-2" />
+                  Search Hotels
+                </Link>
               </Button>
-              <Button variant="coral" size="xl" className="flex-1">
-                <Search className="w-5 h-5 mr-2" />
-                Find Flights
+              <Button variant="coral" size="xl" className="flex-1" asChild>
+                <Link to="/flights">
+                  <Search className="w-5 h-5 mr-2" />
+                  Find Flights
+                </Link>
               </Button>
-              <Button variant="adventure" size="xl" className="flex-1">
-                <Search className="w-5 h-5 mr-2" />
-                Book Tours
+              <Button variant="adventure" size="xl" className="flex-1" asChild>
+                <Link to="/tours">
+                  <Search className="w-5 h-5 mr-2" />
+                  Book Tours
+                </Link>
               </Button>
             </div>
           </Card>
