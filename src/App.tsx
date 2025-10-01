@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import Assistant from "./pages/Assistant";
 import Hotels from "./pages/Hotels";
 import Flights from "./pages/Flights";
+import FlightResults from "./pages/FlightResults";
 import Tours from "./pages/Tours";
 import Community from "./pages/Community";
 import Login from "./pages/Login";
@@ -46,6 +47,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/hotels" element={<Hotels />} />
             <Route path="/flights" element={<Flights />} />
+            <Route path="/flight-results" element={<FlightResults />} />
             <Route path="/tours" element={<Tours />} />
             <Route path="/community" element={<Community />} />
             <Route path="/assistant" element={<Assistant />} />

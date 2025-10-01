@@ -15,7 +15,8 @@ const Hotels = () => {
       price: 450,
       image: "/placeholder.svg",
       amenities: ["Wifi", "Parking", "Spa", "Restaurant"],
-      description: "Luxury beachfront resort with pristine white sand beaches"
+      description: "Luxury beachfront resort with pristine white sand beaches",
+      reviews: 1247
     },
     {
       id: 2,
@@ -25,7 +26,8 @@ const Hotels = () => {
       price: 320,
       image: "/placeholder.svg",
       amenities: ["Wifi", "Restaurant", "Spa"],
-      description: "Cozy mountain retreat with stunning alpine views"
+      description: "Cozy mountain retreat with stunning alpine views",
+      reviews: 892
     },
     {
       id: 3,
@@ -35,7 +37,41 @@ const Hotels = () => {
       price: 280,
       image: "/placeholder.svg",
       amenities: ["Wifi", "Parking", "Restaurant", "Spa"],
-      description: "Modern hotel in the heart of Manhattan"
+      description: "Modern hotel in the heart of Manhattan",
+      reviews: 2156
+    },
+    {
+      id: 4,
+      name: "Tropical Paradise Villa",
+      location: "Bali, Indonesia",
+      rating: 4.9,
+      price: 380,
+      image: "/placeholder.svg",
+      amenities: ["Wifi", "Pool", "Spa", "Restaurant"],
+      description: "Private villa with infinity pool overlooking rice terraces",
+      reviews: 743
+    },
+    {
+      id: 5,
+      name: "Historic Palace Hotel",
+      location: "Paris, France",
+      rating: 4.8,
+      price: 520,
+      image: "/placeholder.svg",
+      amenities: ["Wifi", "Restaurant", "Spa", "Bar"],
+      description: "Elegant 5-star hotel near the Eiffel Tower",
+      reviews: 1834
+    },
+    {
+      id: 6,
+      name: "Desert Oasis Resort",
+      location: "Dubai, UAE",
+      rating: 4.9,
+      price: 650,
+      image: "/placeholder.svg",
+      amenities: ["Wifi", "Pool", "Spa", "Restaurant", "Parking"],
+      description: "Ultra-luxury resort with private beach and world-class amenities",
+      reviews: 1567
     }
   ];
 
@@ -99,7 +135,7 @@ const Hotels = () => {
         </Card>
 
         {/* Hotels Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {hotels.map((hotel) => (
             <Card key={hotel.id} className="overflow-hidden hover:shadow-travel transition-all duration-300">
               <div className="relative">
@@ -115,19 +151,22 @@ const Hotels = () => {
               
               <CardHeader>
                 <div className="flex justify-between items-start">
-                  <div>
-                    <CardTitle className="text-lg">{hotel.name}</CardTitle>
-                    <div className="flex items-center mt-1 text-muted-foreground">
+                  <div className="flex-1">
+                    <CardTitle className="text-lg mb-2">{hotel.name}</CardTitle>
+                    <div className="flex items-center text-muted-foreground mb-1">
                       <MapPin className="w-4 h-4 mr-1" />
                       <span className="text-sm">{hotel.location}</span>
                     </div>
-                  </div>
-                  <div className="flex items-center">
-                    <Star className="w-4 h-4 text-yellow-400 fill-current mr-1" />
-                    <span className="font-medium">{hotel.rating}</span>
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center">
+                        <Star className="w-4 h-4 text-yellow-400 fill-current mr-1" />
+                        <span className="font-medium">{hotel.rating}</span>
+                      </div>
+                      <span className="text-xs text-muted-foreground">({hotel.reviews} reviews)</span>
+                    </div>
                   </div>
                 </div>
-                <CardDescription>{hotel.description}</CardDescription>
+                <CardDescription className="mt-2">{hotel.description}</CardDescription>
               </CardHeader>
 
               <CardContent>

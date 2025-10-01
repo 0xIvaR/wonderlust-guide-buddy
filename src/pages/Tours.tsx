@@ -17,7 +17,9 @@ const Tours = () => {
       rating: 4.9,
       image: "/placeholder.svg",
       highlights: ["Pyramids of Giza", "Valley of Kings", "Nile River Cruise", "Abu Simbel"],
-      nextDeparture: "March 15, 2024"
+      nextDeparture: "March 15, 2024",
+      difficulty: "Moderate",
+      included: "Accommodation, Meals, Guide, Transfers"
     },
     {
       id: 2,
@@ -29,7 +31,9 @@ const Tours = () => {
       rating: 4.8,
       image: "/placeholder.svg",
       highlights: ["Mount Fuji", "Traditional Ryokans", "Cherry Blossoms", "Bullet Train"],
-      nextDeparture: "April 10, 2024"
+      nextDeparture: "April 10, 2024",
+      difficulty: "Easy",
+      included: "Accommodation, Some Meals, Guide, Rail Pass"
     },
     {
       id: 3,
@@ -41,7 +45,51 @@ const Tours = () => {
       rating: 4.7,
       image: "/placeholder.svg",
       highlights: ["Machu Picchu", "Sacred Valley", "Inca Trail", "Lake Titicaca"],
-      nextDeparture: "May 20, 2024"
+      nextDeparture: "May 20, 2024",
+      difficulty: "Challenging",
+      included: "Accommodation, Meals, Guide, Permits"
+    },
+    {
+      id: 4,
+      name: "European Grand Tour",
+      location: "Paris, Rome, Barcelona",
+      duration: "14 days",
+      groupSize: "14-18 people",
+      price: 4299,
+      rating: 4.9,
+      image: "/placeholder.svg",
+      highlights: ["Eiffel Tower", "Colosseum", "Sagrada Familia", "Vatican City"],
+      nextDeparture: "June 5, 2024",
+      difficulty: "Easy",
+      included: "Accommodation, Breakfasts, Guide, Transfers"
+    },
+    {
+      id: 5,
+      name: "African Safari Experience",
+      location: "Kenya & Tanzania",
+      duration: "9 days",
+      groupSize: "8-10 people",
+      price: 3899,
+      rating: 4.8,
+      image: "/placeholder.svg",
+      highlights: ["Serengeti", "Masai Mara", "Ngorongoro Crater", "Big Five"],
+      nextDeparture: "July 12, 2024",
+      difficulty: "Moderate",
+      included: "Accommodation, All Meals, Safari Guide, Park Fees"
+    },
+    {
+      id: 6,
+      name: "New Zealand Adventure",
+      location: "North & South Island",
+      duration: "15 days",
+      groupSize: "10-14 people",
+      price: 4599,
+      rating: 4.9,
+      image: "/placeholder.svg",
+      highlights: ["Milford Sound", "Queenstown", "Rotorua", "Abel Tasman"],
+      nextDeparture: "August 20, 2024",
+      difficulty: "Moderate",
+      included: "Accommodation, Meals, Activities, Guide"
     }
   ];
 
@@ -150,12 +198,20 @@ const Tours = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  <span>Next departure: {tour.nextDeparture}</span>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center text-muted-foreground">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <span>Next: {tour.nextDeparture}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Badge variant="secondary" className="text-xs">{tour.difficulty}</Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Includes: {tour.included}
+                  </p>
                 </div>
                 
-                <div className="flex justify-between items-center pt-4 border-t">
+                <div className="flex justify-between items-center pt-4 border-t mt-4">
                   <div>
                     <span className="text-2xl font-bold text-primary">${tour.price}</span>
                     <span className="text-muted-foreground text-sm">/person</span>

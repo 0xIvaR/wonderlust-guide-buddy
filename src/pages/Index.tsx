@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import BookingCards from "@/components/BookingCards";
-import TravelAssistant from "@/components/TravelAssistant";
+import AIFeatures from "@/components/AIFeatures";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -11,7 +11,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <BookingCards />
-        <TravelAssistant />
+        <AIFeatures />
       </main>
       <Footer />
     </div>
